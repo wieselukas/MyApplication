@@ -24,21 +24,29 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
     public class WeatherViewHolder extends ViewHolder{
         TextView temp_text;
+        TextView temp_city;
+        TextView temp_tmrw;
+        TextView temp_day_tmrw;
 
         public WeatherViewHolder(View v) {
             super(v);
             this.temp_text = (TextView)itemView.findViewById(R.id.temp_text_id);
+            this.temp_city = (TextView)itemView.findViewById(R.id.temp_city_id);
+            this.temp_tmrw = (TextView)itemView.findViewById(R.id.temp_tmrw_id);
+            this.temp_day_tmrw = (TextView)itemView.findViewById(R.id.temp_day_tmrw_id);
         }
     }
 
     public class RssViewHolder extends ViewHolder{
         TextView rss_headline;
         TextView rss_text;
+        TextView rss_Info;
 
         public RssViewHolder(View v) {
             super(v);
             this.rss_headline = (TextView)itemView.findViewById(R.id.rss_headline_id);
             this.rss_text = (TextView)itemView.findViewById(R.id.rss_text_id);
+            this.rss_Info = (TextView)itemView.findViewById(R.id.rss_info_id);
         }
     }
 
@@ -62,11 +70,15 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder ViewHolder, int i) {
         if(myData.get(i).getViewType()==0) {
             WeatherViewHolder holder = (WeatherViewHolder) ViewHolder;
-            holder.temp_text.setText(myData.get(i).getTempInCel() + "°C");
+            holder.temp_text.setText(myData.get(i).getTempInCel()+"°C");
+            holder.temp_city.setText(myData.get(i).getTempCity());
+            holder.temp_tmrw.setText(myData.get(i).getTempInCelTmrw()+"°C");
+            holder.temp_day_tmrw.setText(myData.get(i).getTempDayTmrw());
         }else{
             RssViewHolder holder = (RssViewHolder) ViewHolder;
             holder.rss_headline.setText(myData.get(i).getRssHeadline());
             holder.rss_text.setText(myData.get(i).getRssText());
+            holder.rss_Info.setText(myData.get(i).getRssInfo());
         }
     }
 

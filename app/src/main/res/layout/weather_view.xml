@@ -12,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="100dp">
 
         <ImageView
             android:layout_width="100dp"
@@ -21,13 +21,62 @@
             android:id="@+id/imageView"
             android:layout_marginRight="10dp"/>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/temp_text_id"
-            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/imageView"
-            android:textSize="50dp"/>
+            android:layout_weight=".70"
+            android:layout_marginLeft="5dp  "
+            android:id="@+id/tdy_view_id">
+
+            <TextView
+                android:text="32°C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp_text_id"
+                android:layout_marginTop="-5dp"
+                android:textSize="50dp"
+                />
+
+            <TextView
+                android:text="Finowfurt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/temp_text_id"
+                android:layout_marginTop="-10dp"
+                android:id="@+id/temp_city_id" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tmrw_view_id"
+            android:layout_weight=".70">
+
+            <TextView
+                android:text="Mo"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/temp_day_tmrw_id" />
+
+            <TextView
+                android:text="30°C"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/temp_day_tmrw_id"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="-4dp"
+                android:id="@+id/temp_tmrw_id" />
+        </RelativeLayout>
+
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

@@ -22,6 +22,7 @@
             android:layout_marginRight="10dp"/>
 
         <TextView
+            android:text="Headline"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:id="@+id/rss_headline_id"
@@ -33,11 +34,23 @@
             android:maxLines="1"/>
 
         <TextView
+            android:text="from FAZ, Mo 27th of December"
+            android:textSize="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/rss_info_id"
+            android:layout_toRightOf="@id/rss_image_id"
+            android:layout_below="@id/rss_headline_id"/>
+
+        <TextView
+            android:text="Example text example text example text example text example text example text example text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rss_text_id"
             android:layout_toRightOf="@id/rss_image_id"
-            android:layout_below="@id/rss_headline_id"/>
+            android:layout_below="@id/rss_info_id"/>
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>
