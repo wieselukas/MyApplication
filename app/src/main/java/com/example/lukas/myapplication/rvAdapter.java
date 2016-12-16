@@ -7,6 +7,7 @@ package com.example.lukas.myapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
-    List<Data> myData;
+    private List<Data> myData;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ViewHolder(View itemView) {
@@ -27,6 +28,7 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         TextView temp_city;
         TextView temp_tmrw;
         TextView temp_day_tmrw;
+        ImageView temp_image;
 
         public WeatherViewHolder(View v) {
             super(v);
@@ -34,6 +36,7 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
             this.temp_city = (TextView)itemView.findViewById(R.id.temp_city_id);
             this.temp_tmrw = (TextView)itemView.findViewById(R.id.temp_tmrw_id);
             this.temp_day_tmrw = (TextView)itemView.findViewById(R.id.temp_day_tmrw_id);
+            this.temp_image = (ImageView)itemView.findViewById(R.id.temp_image_id);
         }
     }
 
@@ -70,10 +73,11 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder ViewHolder, int i) {
         if(myData.get(i).getViewType()==0) {
             WeatherViewHolder holder = (WeatherViewHolder) ViewHolder;
-            holder.temp_text.setText(myData.get(i).getTempInCel()+"°C");
+            holder.temp_text.setText(myData.get(i).getTempInCel());
             holder.temp_city.setText(myData.get(i).getTempCity());
-            holder.temp_tmrw.setText(myData.get(i).getTempInCelTmrw()+"°C");
+            holder.temp_tmrw.setText(myData.get(i).getTempInCelTmrw());
             holder.temp_day_tmrw.setText(myData.get(i).getTempDayTmrw());
+            holder.temp_image.setImageResource(myData.get(i).getTempIcon());
         }else{
             RssViewHolder holder = (RssViewHolder) ViewHolder;
             holder.rss_headline.setText(myData.get(i).getRssHeadline());

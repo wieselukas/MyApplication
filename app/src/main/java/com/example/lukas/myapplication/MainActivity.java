@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeData(){
         myData = new ArrayList<>();
-        myData.add(new Data(0,21,"Berlin","Mo",32));
-        myData.add(new Data(0,22,"Finowfurt","Mo",32));
-        myData.add(new Data(0,23,"Berlin","Mo",32));
-        myData.add(new Data(0,24,"Frankfurt","Mo",32));
+        myData.add(new Data(0,21,"Berlin","Mo",32,"01"));
+        myData.add(new Data(0,22,"Finowfurt","Mo",32,"02"));
+        myData.add(new Data(0,23,"Berlin","Mo",32,"03"));
+        myData.add(new Data(0,24,"Frankfurt","Mo",32,"05"));
         myData.add(new Data(1,"Erste Überschrift","erster Text erster Text erster Text erster Text erster Text erster Text erster Text ","from FAZ"));
         myData.add(new Data(1,"Erste Überschrift","erster Text erster Text erster Text erster Text erster Text erster Text erster Text ","from Spiegel"));
     }
