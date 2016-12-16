@@ -11,6 +11,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<Data> myData;
 
+    //test Data initialization
     private void initializeData(){
         myData = new ArrayList<>();
         myData.add(new Data(0,21,"Berlin","Mo",32,"01"));
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         //Setting up the LayoutManager
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
+
+        /*@Vitus PLACE TO PUT YOUR CODE IN*/
 
         rvAdapter adapter = new rvAdapter(myData);
         rv.setAdapter(adapter);

@@ -7,22 +7,18 @@ import android.graphics.drawable.Drawable;
  */
 
 public class Data {
-    private Integer viewType;        //possible: ToDo: Number description
+    private Integer viewType;       //Layout
 
-    private Integer tempInCel;       //ToDo: City, Temperature next day
+    private Integer tempInCel;      //temperature in Celsius
 
-    private String tempCity;
-    private String tempDayTmrw;
-    private Integer tempInCelTmrw;
+    private String tempCity;        //City as a text
+    private String tempDayTmrw;     //Day of Tomorrow as a Text (eg.: "Mo")
+    private Integer tempInCelTmrw;  //Temperature of Tomorrow
+    private String tempIcon;        //number of Icon (eg.: "092")
 
-
-
-    private String tempIcon;
-
-    private String rssHeadline;     //ToDo: date,
-    private String rssText;
-
-    private String rssInfo;
+    private String rssHeadline;     //Headline of RSS Message
+    private String rssText;         //Example Text of RSS Message
+    private String rssInfo;         //summarized info text
 
     public Data(Integer viewType, Integer tempInCel, String tempCity, String tempDayTmrw, Integer tempInCelTmrw, String tempIcon) {
         this.viewType = viewType;
