@@ -1,6 +1,8 @@
-package com.example.lukas.myapplication;
+package data;
 
 import android.graphics.drawable.Drawable;
+
+import com.example.lukas.myapplication.R;
 
 /**
  * Created by Lukas on 19.11.2016.

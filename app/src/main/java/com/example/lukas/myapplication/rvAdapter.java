@@ -13,24 +13,26 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
-public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
+import data.Data;
+
+class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
     private List<Data> myData;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ViewHolder(View itemView) {
             super(itemView);
         }
     }
 
-    public class WeatherViewHolder extends ViewHolder{
+    private class WeatherViewHolder extends ViewHolder{
         TextView temp_text;
         TextView temp_city;
         TextView temp_tmrw;
         TextView temp_day_tmrw;
         ImageView temp_image;
 
-        public WeatherViewHolder(View v) {
+        WeatherViewHolder(View v) {
             super(v);
             this.temp_text = (TextView)itemView.findViewById(R.id.temp_text_id);
             this.temp_city = (TextView)itemView.findViewById(R.id.temp_city_id);
@@ -40,12 +42,12 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         }
     }
 
-    public class RssViewHolder extends ViewHolder{
+    private class RssViewHolder extends ViewHolder{
         TextView rss_headline;
         TextView rss_text;
         TextView rss_Info;
 
-        public RssViewHolder(View v) {
+        RssViewHolder(View v) {
             super(v);
             this.rss_headline = (TextView)itemView.findViewById(R.id.rss_headline_id);
             this.rss_text = (TextView)itemView.findViewById(R.id.rss_text_id);
@@ -53,7 +55,7 @@ public class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         }
     }
 
-    public rvAdapter(List<Data> myData) {
+    rvAdapter(List<Data> myData) {
         this.myData = myData;
     }
 

@@ -1,12 +1,19 @@
 package com.example.lukas.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import data.Data;
+import dataInputs.RSSReader;
 
 public class MainActivity extends AppCompatActivity {
     private List<Data> myData;
@@ -38,11 +45,34 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
 
         /*@Vitus PLACE TO PUT YOUR CODE IN*/
+        RSSReader rssReader = new RSSReader(this);
+        rssReader.execute();
 
         rvAdapter adapter = new rvAdapter(myData);
         rv.setAdapter(adapter);
 
     }
 
+    //create the settings button in the Action Bar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main,menu);
+
+        return true;
+    }
+
+    //Call the settings Activity when "Settings" is pressed
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==R.id.settings_id){
+            //Settings Button pressed
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <SwitchPreference
+        android:paddingTop="200dp"
+        android:defaultValue="false"
+        android:key="dark_view_switch_id"
+        android:title="@string/dark_view"/>
+
+</PreferenceScreen>
