@@ -32,10 +32,16 @@ public class RSSReader extends AsyncTask<Void,Void,Void>{
     private  String address = "https://www.tagesschau.de/xml/rss2"; // URL of the Feed ToDo: needs to be flexible
     private URL StreamUrl; //URL Object for Data Stream
 
+    private ArrayList<FeedEntry>feedItems=new ArrayList<>();
+
     public RSSReader (Context cont){
         this.cont = cont;
         progDialog=new ProgressDialog(cont);
         progDialog.setMessage("Getting Data from the Cloud");
+    }
+
+    public ArrayList<FeedEntry> getFeedItems() {
+        return feedItems;
     }
 
     @Override
@@ -58,7 +64,7 @@ public class RSSReader extends AsyncTask<Void,Void,Void>{
 
     private void processXml(Document data) {
         if (data != null) {
-            ArrayList<FeedEntry>feedItems=new ArrayList<>();
+
             Element root = data.getDocumentElement();
             Node channel = root.getChildNodes().item(1);
             NodeList items = channel.getChildNodes();

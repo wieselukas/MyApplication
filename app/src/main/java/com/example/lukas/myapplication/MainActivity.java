@@ -13,13 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.Data;
+import data.FeedEntry;
 import dataInputs.RSSReader;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Data> myData;
+    private List<FeedEntry> myData;
 
     //test Data initialization
-    private void initializeData(){
+    /*private void initializeData(){
         myData = new ArrayList<>();
         myData.add(new Data(0,21,"Berlin","Mo",32,"01"));
         myData.add(new Data(0,22,"Finowfurt","Mo",32,"02"));
@@ -27,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
         myData.add(new Data(0,24,"Frankfurt","Mo",32,"05"));
         myData.add(new Data(1,"Erste Überschrift","erster Text erster Text erster Text erster Text erster Text erster Text erster Text ","from FAZ"));
         myData.add(new Data(1,"Erste Überschrift","erster Text erster Text erster Text erster Text erster Text erster Text erster Text ","from Spiegel"));
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initializeData();
+        //initializeData();
 
         //Obtaining the RecyclerView
         RecyclerView rv = (RecyclerView)findViewById(R.id.rv_id);
@@ -47,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
         /*@Vitus PLACE TO PUT YOUR CODE IN*/
         RSSReader rssReader = new RSSReader(this);
         rssReader.execute();
+        myData = rssReader.getFeedItems();
+
 
         rvAdapter adapter = new rvAdapter(myData);
         rv.setAdapter(adapter);
+
 
     }
 

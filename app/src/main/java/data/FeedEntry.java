@@ -15,6 +15,10 @@ public class FeedEntry {
         return title;
     }
 
+    public int getViewType(){
+        return 1;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }

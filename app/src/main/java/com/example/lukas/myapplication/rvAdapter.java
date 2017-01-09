@@ -14,10 +14,11 @@ import android.support.v7.widget.RecyclerView;
 import java.util.List;
 
 import data.Data;
+import data.FeedEntry;
 
 class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
-    private List<Data> myData;
+    private List<FeedEntry> myData;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ViewHolder(View itemView) {
@@ -55,7 +56,7 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         }
     }
 
-    rvAdapter(List<Data> myData) {
+    rvAdapter(List<FeedEntry> myData) {
         this.myData = myData;
     }
 
@@ -75,16 +76,16 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder ViewHolder, int i) {
         if(myData.get(i).getViewType()==0) {
             WeatherViewHolder holder = (WeatherViewHolder) ViewHolder;
-            holder.temp_text.setText(myData.get(i).getTempInCel());
+            /*holder.temp_text.setText(myData.get(i).getTempInCel());
             holder.temp_city.setText(myData.get(i).getTempCity());
             holder.temp_tmrw.setText(myData.get(i).getTempInCelTmrw());
             holder.temp_day_tmrw.setText(myData.get(i).getTempDayTmrw());
-            holder.temp_image.setImageResource(myData.get(i).getTempIcon());
+            holder.temp_image.setImageResource(myData.get(i).getTempIcon());*/
         }else{
             RssViewHolder holder = (RssViewHolder) ViewHolder;
-            holder.rss_headline.setText(myData.get(i).getRssHeadline());
-            holder.rss_text.setText(myData.get(i).getRssText());
-            holder.rss_Info.setText(myData.get(i).getRssInfo());
+            holder.rss_headline.setText(myData.get(i).getTitle());
+            holder.rss_text.setText(myData.get(i).getDescription());
+            holder.rss_Info.setText(myData.get(i).getPubDate());
         }
     }
 

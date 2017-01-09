@@ -9,7 +9,7 @@ import com.example.lukas.myapplication.R;
  */
 
 public class Data {
-    private Integer viewType;       //Layout
+    private Integer viewType;       //Layout 0 for weather and 1 for rss
 
     private Integer tempInCel;      //temperature in Celsius
 
