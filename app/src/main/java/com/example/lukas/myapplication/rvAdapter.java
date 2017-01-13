@@ -47,12 +47,14 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         TextView rss_headline;
         TextView rss_text;
         TextView rss_Info;
+        ImageView rss_image;
 
         RssViewHolder(View v) {
             super(v);
             this.rss_headline = (TextView)itemView.findViewById(R.id.rss_headline_id);
             this.rss_text = (TextView)itemView.findViewById(R.id.rss_text_id);
             this.rss_Info = (TextView)itemView.findViewById(R.id.rss_info_id);
+            this.rss_image = (ImageView)itemView.findViewById(R.id.rss_image_id);
         }
     }
 
@@ -86,6 +88,7 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
             holder.rss_headline.setText(myData.get(i).getTitle());
             holder.rss_text.setText(myData.get(i).getDescription());
             holder.rss_Info.setText(myData.get(i).getPubDate());
+            new DownloadImageTask(holder.rss_image).execute(myData.get(i).getThumbnailUrl());
         }
     }
 

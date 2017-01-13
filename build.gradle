@@ -15,12 +15,14 @@ buildscript {
     }
 }
 
+
 allprojects {
     repositories {
         jcenter()
     }
 }
 
+//specifies what happens on clean
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

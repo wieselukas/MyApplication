@@ -2,6 +2,10 @@ package com.example.lukas.myapplication;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+import data.Data;
+
 import static org.junit.Assert.*;
 
 /**
@@ -10,8 +14,10 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+    Data myData = new Data(0,21,"Berlin","Mo",32,"01");
+
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void check_Temp_City() throws Exception {
+        assertEquals("Berlin", myData.getTempCity());
     }
 }

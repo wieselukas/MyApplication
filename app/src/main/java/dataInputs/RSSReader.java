@@ -32,12 +32,25 @@ public class RSSReader extends AsyncTask<Void,Void,Void>{
     private  String address = "https://www.tagesschau.de/xml/rss2"; // URL of the Feed ToDo: needs to be flexible
     private URL StreamUrl; //URL Object for Data Stream
 
+
     private ArrayList<FeedEntry>feedItems=new ArrayList<>();
+
+
+
+    public void setReady_flag(boolean ready_flag) {
+        this.ready_flag = ready_flag;
+    }
+
+    private boolean ready_flag;
 
     public RSSReader (Context cont){
         this.cont = cont;
         progDialog=new ProgressDialog(cont);
         progDialog.setMessage("Getting Data from the Cloud");
+    }
+
+    public boolean isReady() {
+        return ready_flag;
     }
 
     public ArrayList<FeedEntry> getFeedItems() {
@@ -53,6 +66,7 @@ public class RSSReader extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onPreExecute() {
         progDialog.show();
+        ready_flag=false;
         super.onPreExecute();
     }
 
@@ -74,27 +88,33 @@ public class RSSReader extends AsyncTask<Void,Void,Void>{
                     FeedEntry item=new FeedEntry();
                     NodeList itemchilds = cureentchild.getChildNodes();
                     for (int j = 0; j < itemchilds.getLength(); j++) {
-                        Node cureent = itemchilds.item(j);
-                        if (cureent.getNodeName().equalsIgnoreCase("title")){
-                            item.setTitle(cureent.getTextContent());
-                        }else if (cureent.getNodeName().equalsIgnoreCase("description")){
-                            item.setDescription(cureent.getTextContent());
-                        }else if (cureent.getNodeName().equalsIgnoreCase("pubDate")){
-                            item.setPubDate(cureent.getTextContent());
-                        }else if (cureent.getNodeName().equalsIgnoreCase("link")){
-                            item.setLink(cureent.getTextContent());
+                        Node current = itemchilds.item(j);
+                        if (current.getNodeName().equalsIgnoreCase("title")){
+                            item.setTitle(current.getTextContent());
+                        }else if (current.getNodeName().equalsIgnoreCase("description")){
+                            item.setDescription(current.getTextContent());
+                        }else if (current.getNodeName().equalsIgnoreCase("pubDate")){
+                            item.setPubDate(current.getTextContent());
+                        }else if (current.getNodeName().equalsIgnoreCase("link")){
+                            item.setLink(current.getTextContent());
+                        }else if (current.getNodeName().equalsIgnoreCase("media:thumbnails")){
+                            String url = current.getAttributes().item(0).getTextContent();
+                            item.setThumbnailUrl(url);
                         }
                     }
+                    item.setThumbnailUrl("http://modernus.de/pics/branchcontent/solarthermie/solarthermie-anlagen-test-vergleich-paradigma-wagner-viessman-buderus.jpg");   //Todo: replace with real code
                     feedItems.add(item);
                     Log.d("itemTitle", item.getTitle());
                     Log.d("itemDescription",item.getDescription());
                     Log.d("itemPubDate",item.getPubDate());
                     Log.d("itemLink",item.getLink());
+                    Log.d("iconLink",item.getThumbnailUrl());
 
 
 
                 }
             }
+            ready_flag=true;
         }
     }
 

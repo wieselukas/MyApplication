@@ -1,10 +1,12 @@
 package com.example.lukas.myapplication;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         /*@Vitus PLACE TO PUT YOUR CODE IN*/
         RSSReader rssReader = new RSSReader(this);
         rssReader.execute();
+        while(!rssReader.isReady()){}
         myData = rssReader.getFeedItems();
+        Log.d("Blublu","Daten übernommen");
 
 
         rvAdapter adapter = new rvAdapter(myData);
