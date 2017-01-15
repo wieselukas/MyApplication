@@ -4,6 +4,7 @@ package com.example.lukas.myapplication;
  * Created by Lukas on 19.11.2016.
  */
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,25 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
     private List<FeedEntry> myData;
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    private ItemClickListener clickListener;
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            if (clickListener != null) {
+                clickListener.onClick(view, getAdapterPosition());
+            }
+
+        }
+    }
+
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
     }
 
     private class WeatherViewHolder extends ViewHolder{

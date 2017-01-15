@@ -1,7 +1,7 @@
 package com.example.lukas.myapplication;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import data.Data;
 import data.FeedEntry;
 import dataInputs.RSSReader;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClickListener {
     private List<FeedEntry> myData;
 
     //test Data initialization
@@ -52,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
         rssReader.execute();
         while(!rssReader.isReady()){}
         myData = rssReader.getFeedItems();
-        Log.d("Blublu","Daten übernommen");
 
 
         rvAdapter adapter = new rvAdapter(myData);
         rv.setAdapter(adapter);
-
-
+        adapter.setClickListener(this);
     }
 
     //create the settings button in the Action Bar
@@ -81,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view, int position) {
+        Log.d("opening..",myData.get(position).getLink());
+        Uri uriUrl = Uri.parse(myData.get(position).getLink());
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 }
 
