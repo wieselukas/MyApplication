@@ -1,63 +1,76 @@
 package data;
 
-import android.graphics.drawable.Drawable;
-
 import com.example.lukas.myapplication.R;
 
 /**
  * Created by Lukas on 19.11.2016.
+ * Remodeled by Vitus on 14.01.2017
  */
 
 public class Data {
-    private Integer viewType;       //Layout 0 for weather and 1 for rss
+    private String title;       //for weather: city name
+    private String content;     //for Weather: current temperature
+    private String link;        //for Weather: link to website
+    private String imgInfo;     //for Weather: weather Image
+    private String info;        //for weather: temperature for next day, for RSS: Publication date
 
-    private Integer tempInCel;      //temperature in Celsius
-
-    private String tempCity;        //City as a text
-    private String tempDayTmrw;     //Day of Tomorrow as a Text (eg.: "Mo")
-    private Integer tempInCelTmrw;  //Temperature of Tomorrow
-    private String tempIcon;        //number of Icon (eg.: "092")
-
-    private String rssHeadline;     //Headline of RSS Message
-    private String rssText;         //Example Text of RSS Message
-    private String rssInfo;         //summarized info text
-
-    public Data(Integer viewType, Integer tempInCel, String tempCity, String tempDayTmrw, Integer tempInCelTmrw, String tempIcon) {
-        this.viewType = viewType;
-        this.tempInCel = tempInCel;
-        this.tempCity = tempCity;
-        this.tempDayTmrw = tempDayTmrw;
-        this.tempInCelTmrw = tempInCelTmrw;
-        this.tempIcon = tempIcon;
+    public Data(String content, String imgInfo, String info, String link, String title) {
+        this.content = content;
+        this.imgInfo = imgInfo;
+        this.info = info;
+        this.link = link;
+        this.title = title;
     }
 
-    public Data(Integer viewType, String rssHeadline, String rssText, String rssInfo) {
-        this.viewType = viewType;
-        this.rssHeadline = rssHeadline;
-        this.rssText = rssText;
-        this.rssInfo = rssInfo;
+    public Data() {
     }
 
-    public Integer getViewType() {
-        return viewType;
+    public String getInfo() {
+        return info;
     }
 
-    public String getTempInCel() {return tempInCel.toString()+"°C";}
-
-    public String getTempCity() {
-        return tempCity;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public String getTempInCelTmrw() {
-        return tempInCelTmrw.toString()+"°C";
+    public void setInfo(int info) {
+        this.info = Integer.toString(info);
     }
 
-    public String getTempDayTmrw() {
-        return tempDayTmrw;
+    public int getViewType(){
+        return 99;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getImgInfo() {
+        return imgInfo;
     }
 
     public int getTempIcon() {
-        switch(tempIcon){
+        switch(imgInfo){
             case "01": return R.drawable.i01;
             case "02": return R.drawable.i02;
             case "03": return R.drawable.i03;
@@ -71,18 +84,11 @@ public class Data {
         }
     }
 
-    public String getRssHeadline() {
-        return rssHeadline;
+    public void setImgInfo(String imgInfo) {
+        this.imgInfo = imgInfo;
     }
 
-    public String getRssText() {
-        return rssText;
+    public void setImgInfo(int imgInfo) {
+        this.imgInfo = Integer.toString(imgInfo);
     }
-
-    public String getRssInfo() {
-        return rssInfo;
-    }
-
 }
-
-

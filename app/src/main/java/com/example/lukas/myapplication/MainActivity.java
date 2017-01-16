@@ -17,10 +17,11 @@ import java.util.List;
 
 import data.Data;
 import data.FeedEntry;
+import data.Weather;
 import dataInputs.RSSReader;
 
 public class MainActivity extends AppCompatActivity implements ItemClickListener {
-    private List<FeedEntry> myData;
+    private List<Data> myData;
 
     //test Data initialization
     /*private void initializeData(){
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         rssReader.execute();
         while(!rssReader.isReady()){}
         myData = rssReader.getFeedItems();
+
+        myData.add(new Weather("23","01","13","www.google.de","Berlin"));
 
 
         rvAdapter adapter = new rvAdapter(myData);

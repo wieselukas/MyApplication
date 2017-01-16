@@ -19,7 +19,7 @@ import data.FeedEntry;
 
 class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
 
-    private List<FeedEntry> myData;
+    private List<Data> myData;
 
     private ItemClickListener clickListener;
 
@@ -74,7 +74,7 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
         }
     }
 
-    rvAdapter(List<FeedEntry> myData) {
+    rvAdapter(List<Data> myData) {
         this.myData = myData;
     }
 
@@ -94,18 +94,18 @@ class rvAdapter extends RecyclerView.Adapter<rvAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder ViewHolder, int i) {
         if(myData.get(i).getViewType()==0) {
             WeatherViewHolder holder = (WeatherViewHolder) ViewHolder;
-            /*holder.temp_text.setText(myData.get(i).getTempInCel());
-            holder.temp_city.setText(myData.get(i).getTempCity());
-            holder.temp_tmrw.setText(myData.get(i).getTempInCelTmrw());
-            holder.temp_day_tmrw.setText(myData.get(i).getTempDayTmrw());
-            holder.temp_image.setImageResource(myData.get(i).getTempIcon());*/
-        }else{
+            holder.temp_text.setText(myData.get(i).getContent()+"°C");
+            holder.temp_city.setText(myData.get(i).getTitle());
+            holder.temp_tmrw.setText(myData.get(i).getInfo()+"°C");
+            holder.temp_day_tmrw.setText("Tue");
+            holder.temp_image.setImageResource(myData.get(i).getTempIcon());
+        }else if(myData.get(i).getViewType()==1) {
             RssViewHolder holder = (RssViewHolder) ViewHolder;
             holder.rss_headline.setText(myData.get(i).getTitle());
-            holder.rss_text.setText(myData.get(i).getDescription());
-            holder.rss_Info.setText(myData.get(i).getPubDate());
-            new DownloadImageTask(holder.rss_image).execute(myData.get(i).getThumbnailUrl());
-        }
+            holder.rss_text.setText(myData.get(i).getContent());
+            holder.rss_Info.setText(myData.get(i).getInfo());
+            new DownloadImageTask(holder.rss_image).execute(myData.get(i).getImgInfo());
+        }else{}
     }
 
     @Override
